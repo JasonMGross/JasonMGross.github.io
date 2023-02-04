@@ -66,22 +66,22 @@ The following excerpt from the Settings form is quickly able to validate a serve
 
 ````vb
 
-    'Server IP Address Pattern includes optional port after colon if the server requires the port to be specified
-    Dim pattern As String = "\b(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)(?::\d{0,4})?\b"
+'Server IP Address Pattern includes optional port after colon if the server requires the port to be specified
+Dim pattern As String = "\b(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)(?::\d{0,4})?\b"
 
-    'Declare regular expression object
-    Dim rx As New Regex(pattern)
+'Declare regular expression object
+Dim rx As New Regex(pattern)
 
-    'Store RegEx matches in MatchCollection
-    Dim matches As MatchCollection = rx.Matches(strServerAddress.text)
+'Store RegEx matches in MatchCollection
+Dim matches As MatchCollection = rx.Matches(strServerAddress.text)
 
-    'If a match is found
-    If matches.Count > 0 Then
+'If a match is found
+If matches.Count > 0 Then
 
-        'Server address is valid
-        IsValidServerAddress = True
+    'Server address is valid
+    IsValidServerAddress = True
 
-    End If
+End If
 
 ````
 
@@ -122,16 +122,16 @@ End Sub
 &emsp; I have demonstrated my ability to identify and address design flaws related to security by not storing plaint text passwords in any additional variables or passing them to any function in plaintext form.  The user input is evaluated directly from the textbox’s text property and hashed before being stored in memory and passed between functions.  The following excerpt from the User Login form demonstrates how this happens in the code.
 
 ````vb
-  'Password RegEx Pattern 
-  '(8 to 15 characters including at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)
-  Dim pattern As String = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,15}$"
-  
-  'Declare regular expression object
-  Dim rx As New Regex(pattern)
-  
-  'Store RegEx matches in MatchCollection
-  Dim matches As MatchCollection = rx.Matches(txtPassword.Text)
-  
-  'If a match is found then the password is valid
-  If matches.Count > 0 Then
+'Password RegEx Pattern 
+'(8 to 15 characters including at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)
+Dim pattern As String = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,15}$"
+
+'Declare regular expression object
+Dim rx As New Regex(pattern)
+
+'Store RegEx matches in MatchCollection
+Dim matches As MatchCollection = rx.Matches(txtPassword.Text)
+
+'If a match is found then the password is valid
+If matches.Count > 0 Then
 ````
