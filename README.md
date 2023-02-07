@@ -16,13 +16,13 @@
 
 
 ### Overview
-
+&emsp; The following are side-by-side screenshots of the four primary screens from both original Android Java application on the left and the newly translated VB.NET Windows desktop application on the right.
 |Original Application| New Application|
 |:---:|:---:|
-|![Original Login Screen](/images/OriginalUserLogin.jpg "Original Login Screen")|![New Login Screen](/images/UserLogin.jpg "New Login Screen")|
-|![Original Target Weight Screen](/images/OriginalSetTargetWeight.jpg "Original Target Weight Screen")|![New Target Weight Screen](/images/SetTargetWeight.jpg "New Target Weight Screen")|
-|![Original Enter Weight Screen](/images/OriginalEnterWeight.jpg "Original Enter Weight Screen")|![New Enter Weight Screen](/images/AddWeightRecord.jpg "New Enter Weight Screen")|
-|![Original Main Display Screen](/images/OriginalMainDisplay.jpg "Original Main Display Screen")|![New Main Display Screen](/images/MainDisplay.jpg "New Main Display Screen")|
+|![Original Login Screen](/images/OriginalUserLogin.jpg "Original Login Screen")<br>User Login Screen|![New Login Screen](/images/UserLogin.jpg "New Login Screen")|
+|![Original Target Weight Screen](/images/OriginalSetTargetWeight.jpg "Original Target Weight Screen")<br>Set Target Weight Screen|![New Target Weight Screen](/images/SetTargetWeight.jpg "New Target Weight Screen")|
+|![Original Enter Weight Screen](/images/OriginalEnterWeight.jpg "Original Enter Weight Screen")<br>Enter Weight Screen|![New Enter Weight Screen](/images/AddWeightRecord.jpg "New Enter Weight Screen")|
+|![Original Main Display Screen](/images/OriginalMainDisplay.jpg "Original Main Display Screen")<br>Main Display Screen|![New Main Display Screen](/images/MainDisplay.jpg "New Main Display Screen")|
 
 
 ### Challenges and Reflections
