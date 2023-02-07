@@ -165,6 +165,11 @@ If matches.Count > 0 Then
 &emsp; Finally, a new button was added to allow the user to delete their account and all weight records associated with that account.  This provides peace of mind that the user’s data can be fully controlled by them and completely removed from the system if they wish.  A stored procedure performs the operation but I quickly realized that the original code only took the username as a parameter presenting a security concern.  I closed the gap by requiring the user to re-enter their password before calling the stored procedure and the hashed password is passed and authenticated before carrying out the operation.  This way, if someone had the credentials to execute the stored procedure without the application, they would still not be able to delete the account without first discovering the user’s password.
 
 
+<p align="center">
+  <img src="/images/DeleteAccount.jpg">
+</p>
+
+
 ### Objectives Review
 
 
