@@ -15,6 +15,16 @@
 &emsp; The artifact chosen for software engineering and design is a mobile weight loss tracking application written in Java for the Android platform.  It was originally developed for CS-390 Mobile Architecture and Programming course.  I am translating the code from Java to VB.NET to allow it to run on the Microsoft Windows operating system.  .NET code has the added advantage of being able to target platforms other than Microsoft Windows with few or no code changes.  I chose this artifact to demonstrate my ability to work with multiple platforms and multiple programming languages as well as being able to convert applications from one platform or language to another.   It requires careful analysis of the original code to determine if any improvements can be made to both design and security.  This artifact provides the potential for both types of improvements.
 
 
+### Overview
+
+|Original Application| New Application|
+|:---:|:---:|
+|![Original Login Screen](/images/OriginalUserLogin.jpg "Original Login Screen")|![New Login Screen](/images/UserLogin.jpg "New Login Screen")|
+|![Original Target Weight Screen](/images/OriginalSetTargetWeight.jpg "Original Target Weight Screen")|![New Target Weight Screen](/images/SetTargetWeight.jpg "New Target Weight Screen")|
+|![Original Enter Weight Screen](/images/OriginalEnterWeight.jpg "Original Enter Weight Screen")|![New Enter Weight Screen](/images/AddWeightRecord.jpg "New Enter Weight Screen")|
+|![Original Main Display Screen](/images/OriginalMainDisplay.jpg "Original Main Display Screen")|![New Main Display Screen](/images/MainDisplay.jpg "New Main Display Screen")|
+
+
 ### Challenges and Reflections
 &emsp; Because different operating environments are involved, there were trade-offs in the translation.  For example, the main data display of the Android app used a custom control that displayed each row of data with its own edit and delete buttons.  This was a good design choice for a small touchscreen app but an unnecessary complexity on a desktop application with mouse functionality.  I chose a simpler data grid view control in .NET to make working with and displaying data easier in the new application.
 
