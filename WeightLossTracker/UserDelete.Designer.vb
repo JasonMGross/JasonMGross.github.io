@@ -90,7 +90,7 @@ Partial Class UserDelete
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "UserDelete"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Confirm Dekete User"
+        Me.Text = "Confirm Delete User"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
