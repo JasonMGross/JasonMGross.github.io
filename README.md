@@ -145,3 +145,33 @@ Dim matches As MatchCollection = rx.Matches(txtPassword.Text)
 'If a match is found then the password is valid
 If matches.Count > 0 Then
 ````
+
+
+## Algorithms & Data Structure 
+
+### Artifact Justification
+
+&emsp; This artifact for algorithms and data structures will be a continuation of the weight tracking android application that has been translated to VB.NET.  Now that all of the original functionality is implemented, I will be implementing several value-added enhancements to both functionality and security.  The data tracked by the original application will be expanded to include an additional metric of exercise minutes that the user can track along with their weight.  A data chart will be implemented demonstrating the ability to manipulate data structures and translate them to visual representations for the user.  Additionally, several security enhancements will bring the application more in line with modern standards when dealing with passwords and user privacy.
+
+
+### Challenges and Reflections
+
+&emsp; The data chart was one of the primary enhancements planned for the algorithms and data structure category.  I wanted both the chart and the DataGridView control to share the same data structure to ensure consistency and eliminate the possibility of having one control display data that the other does not.  I chose to use the DataTable object because it is a very powerful data structure that can be automatically populated with data returned from the database.  Stored procedures will pull all of the records for the given user and store the data directly in a DataTable object.  That object can be immediately set as the data source for the DataGridView control with another single line of code.  The DataGridView control can go on to use its internal functionality to allow the user to select records or order the data to their liking but will not affect the DataTable object or the series points in the chart display.
+
+
+&emsp; The original application had editing and deleting capabilities on each row of data with a single button tap.  By default, each cell in the DataGridView control is clickable but to select an entire row, the user must click the left-most gutter cell.  This would not be immediately apparent to the user.  To compensate, I added additional code in the click event so whenever a cell is clicked, the entire row is automatically selected.  This modification still requires the edit and delete operations to be two-step processes of first selecting a row and then clicking a button.  I added additional code in the mouse event procedures so if a user double-left-clicks on any data row, it immediately opens the editing form with the selected record.  Additionally, a right click of any field initiates the delete operation asking for permission to delete the selected record.  These additions provide single-step functionality to the user to match the original application.
+
+
+&emsp; Finally, a new button was added to allow the user to delete their account and all weight records associated with that account.  This provides peace of mind that the user’s data can be fully controlled by them and completely removed from the system if they wish.  A stored procedure performs the operation but I quickly realized that the original code only took the username as a parameter presenting a security concern.  I closed the gap by requiring the user to re-enter their password before calling the stored procedure and the hashed password is passed and authenticated before carrying out the operation.  This way, if someone had the credentials to execute the stored procedure without the application, they would still not be able to delete the account without first discovering the user’s password.
+
+
+### Objectives Review
+
+
+&emsp; As more and more data points are entered during testing, the chart starts to become cluttered.  I demonstrated my ability to use innovative skills by implementing a series of checkboxes to allow the user to turn each data series in the chart on or off on demand.  This not only alleviates the clutter only when needed but also allows the user to quickly show or hide information giving them the flexibility to specify how their data is displayed.
+
+
+&emsp; The use of DataTable objects to hold data from the database and share them between the different forms and controls demonstrates the ability to code solutions to a logic problem involving data structures.  The database calls happen only when necessary and few if any coding changes would need to be performed if the source data changed or expanded.  For instance, a new field was added to the weight table to track exercise minutes but the code to pull the data and display it in the DataGridView remained the same.  The DataTable object adapted to the change based on the new data and a new field was also displayed in the DataGridView control with no additional code changes.  The following shows how just two lines of code are needed to import data into the data table object and assign it to the data grid control.  This code will work even if fields are added or removed from the database.
+
+
+&emsp; I have demonstrated my ability to identify and address design flaws related to security by replacing the MD5 password hashing algorithm in favor of the more secure SHA256 algorithm making password hashes more difficult to compromise if discovered.  Additionally, I strengthened user security by increasing the minimum length and composition requirements of their passwords to align them with modern best practices.
