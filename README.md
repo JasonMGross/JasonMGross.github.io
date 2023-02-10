@@ -16,7 +16,7 @@
 
 
 ### Overview
-&emsp; The following are side-by-side screenshots of the four primary screens from both original Android Java application on the left and the newly translated VB.NET Windows desktop application on the right.
+&emsp; The following are side-by-side screenshots of the four primary screens from both original Android Java application on the left and the newly translated VB.NET Windows desktop application on the right.  Each of the four primary screens was first designed to resemble the original application’s layout and object placement.  Then the original code behind each screen was translated into the VB.NET language for each new form.  All data validation code and MySQL functions were placed in their own respective modules and can be used in other projects with few to no changes promoting code modularity and reusability.
 |Original Application| New Application|
 |:---:|:---:|
 |![Original Login Screen](/images/OriginalUserLogin.jpg "Original Login Screen")<br>User Login Screen|![New Login Screen](/images/UserLogin.jpg "New Login Screen")|
@@ -173,7 +173,7 @@ If matches.Count > 0 Then
 </p>
 
 
-&emsp; Finally, a new button was added to allow the user to delete their account and all weight records associated with that account.  This provides peace of mind that the user’s data can be fully controlled by them and completely removed from the system if they wish.  A stored procedure performs the operation but I quickly realized that the original code only took the username as a parameter presenting a security concern.  I closed the gap by requiring the user to re-enter their password before calling the stored procedure and the hashed password is passed and authenticated before carrying out the operation.  This way, if someone had the credentials to execute the stored procedure without the application, they would still not be able to delete the account without first discovering the user’s password.
+&emsp; Finally, a new button was added to allow the user to delete their account and all weight records associated with that account.  This provides peace of mind that the user’s data can be fully controlled by them and completely removed from the system if they wish.  A stored procedure performs the operation but I quickly realized a security concern existed where the procedure only took the username as a parameter and not performing any user authentication.  I closed this gap by requiring the user to re-enter their password before calling the stored procedure and the hashed password is passed and authenticated before carrying out the operation.  This way, if someone had the credentials to execute the stored procedure without the application, they would still not be able to delete the account without first discovering the user’s password.
 
 
 <p align="center">
@@ -184,7 +184,7 @@ If matches.Count > 0 Then
 ### Objectives Review
 
 
-&emsp; As more and more data points are entered during testing, the chart starts to become cluttered.  I demonstrated my ability to use innovative skills by implementing a series of checkboxes to allow the user to turn each data series in the chart on or off on demand.  This not only alleviates the clutter only when needed but also allows the user to quickly show or hide information giving them the flexibility to specify how their data is displayed.
+&emsp; As more and more data points are entered during testing, the chart starts to become cluttered.  I demonstrated my ability to use innovative skills by implementing a series of checkboxes to allow the user to turn each data series in the chart on or off on demand.  This not only alleviates the clutter when desired but also allows the user to quickly show or hide information giving them the flexibility to specify how their data is displayed.
 
 
 &emsp; The use of DataTable objects to hold data from the database and share them between the different forms and controls demonstrates the ability to code solutions to a logic problem involving data structures.  The database calls happen only when necessary and few if any coding changes would need to be performed if the source data changed or expanded.  For instance, a new field was added to the weight table to track exercise minutes but the code to pull the data and display it in the DataGridView remained the same.  The DataTable object adapted to the change based on the new data and a new field was also displayed in the DataGridView control with no additional code changes.  The following shows how just two lines of code are needed to import data into the data table object and assign it to the data grid control.  This code will work even if fields are added or removed from the database.
