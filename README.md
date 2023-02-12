@@ -1,4 +1,4 @@
-# SNHU ePortfolio
+# Jason Gross - SNHU CS-499 ePortfolio
 
 
 ## Capstone Code Review - Android Weight Tracking Application
