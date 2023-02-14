@@ -202,3 +202,159 @@ dgvWeightData.DataSource = dtData
 
 
 &emsp; I have demonstrated my ability to identify and address design flaws related to security by replacing the MD5 password hashing algorithm in favor of the more secure SHA256 algorithm making password hashes more difficult to compromise if discovered.  Additionally, I strengthened user security by increasing the minimum length and composition requirements of their passwords to align them with modern best practices.
+
+
+## Databases
+
+
+### Artifact Justification
+
+
+&emsp; The original mobile weight tracking application utilized a local MySQL Lite installation.  The database components of the primary artifact will be a recipe for a complete back-end solution to support the weight tracking application.  I result will be a SQL script that will create the database, user, data tables, and stored procedures used by the front-end application.  With this modification, the back-end no longer needs to exist on the same PC as the front-end application.  Rather, it will exist on a separate secured server and be shared by multiple user clients.  This facilitates greater security since the data and queries are not stored in the client binary.  It also provides better performance of the client machines since the data processing is performed on the back-end server.  This enhancement will demonstrate many applications of advanced MySQL concepts to expand the software with geographically multi-user capabilities.
+
+
+### Challenges and Reflections
+
+&emsp; The first challenge in this phase of the project was establishing a MySQL database server on a separate PC.  A complete server installation is beyond the scope of this project but as a brief overview, I used a computer running Arch Linux and installed MariaDB, a modern MySQL fork, using a series of pre-built scripts to get a secure working database server up and running in just a few minutes.
+
+
+&emsp; I created a user account specifically for the application called WeightAppUser which is only granted permission to execute stored procedures contained in the database.  This way, if the account credentials were reverse engineered from the binary, they could not be used to access the tables directly or execute commands that could reveal additional exploitative information about the database.  This strategy follows the security best practice of least privilege which is granting users only enough access to successfully perform their specific tasks.
+
+
+````sql
+DROP USER IF EXISTS 'WeightAppUser'@'%';
+CREATE USER 'WeightAppUser'@'%' IDENTIFIED BY 'W3!gh75&M3a5ur35';
+GRANT EXECUTE ON WeightDB.* TO 'WeightAppUser'@'%';
+````
+
+&emsp; When creating the new data tables, I chose to consolidate the data storing each user’s target weight in the users table rather than a third table in order to reduce complexity and eliminate unnecessarily repetitive data.  This only required adding a field to the user table and the original target weight table could be eliminated.  There was a second design challenge involving field data types for the tables.  The original application exclusively used strings for all field data types.  This was likely a design choice to make the functionality easier to program.    I chose instead to use appropriate numeric data types for each floating point numeric field and implement proper parsing and error handling in the application code.  Storing numerical data properly will eliminate confusion with future troubleshooting and development.
+
+
+````sql
+-- The users table contains the user ID's, hashed passwords, and current target weights
+-- for each registered user of the application.
+
+CREATE TABLE IF NOT EXISTS users (
+    _id INT PRIMARY KEY AUTO_INCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    targetWeight FLOAT NOT NULL
+);
+
+-- The weights table contains each of the individual weight records entered by
+-- the users through the application over time.  The username field is shared between
+-- the two tables to quickly access each user's current target weight.
+
+CREATE TABLE IF NOT EXISTS weights (
+    _id INT PRIMARY KEY AUTO_INCREMENT,
+    username TEXT NOT NULL,
+    entryDate DATE NOT NULL,
+    weight FLOAT NOT NULL,
+    exerciseMinutes FLOAT NOT NULL,
+    currentTarget FLOAT NOT NULL
+);
+````
+
+&emsp; The biggest challenge is implementing the different functions of the application using server-side stored procedures.  I designed them to be intrinsically secure by using prepared statements.  This prevents maliciously crafted parameters from causing unintended SQL code to   execute.  This behavior is known as SQL-Injection attacks and prepared statements ensure the parameters are treated as such and not just as text to be arbitrarily appended to a SQL statement.  Additionally, I designed each procedure to first perform the intended operation and a second set of instructions to validate that it completed successfully.  A return value indicates success or failure to the calling application.  In the event of failure on some procedures, the value also indicates which part of the procedure failed to give the user more meaningful error messages and allow the application to react accordingly.
+
+
+````sql
+-- Build prepared statment to insert new user record
+	PREPARE stmt1 FROM 'INSERT INTO users (username, password, targetWeight) VALUES (?, ?, 0);';
+	
+	-- Execute prepared statement
+	EXECUTE stmt1 USING @user, @pass;
+	
+	-- Deallocate prepared statement
+	DEALLOCATE PREPARE stmt1;
+	
+	-- Build prepared statement to verify new user record in users table
+	PREPARE stmt2 FROM 'SELECT COUNT(*) INTO @numRecs FROM users WHERE username = ? AND password = ?;';
+	
+	-- Execute prepared statement
+	EXECUTE stmt2 USING @user, @pass;
+	
+	-- Deallocate prepared statement
+	DEALLOCATE PREPARE stmt2;
+  ````
+  
+  
+### Objectives Review
+
+
+&emsp; The final administrative script can be run on any MySQL database server to create the components necessary to support the application.  Migrating the server to other hardware would be a trivial matter of running this script on the destination server and copying over the data tables from the previous server.  This demonstrates my ability to use innovative skills and techniques to implement a complete database solution for the .NET weight tracking application.
+
+
+&emsp; The library of secured stored procedures was designed to provide all of the database functionality for the .NET weight tracking application and does so completely independent of the client software.  This makes the client extremely light on resource utilization as the database handles the bulk of the processing.  This solution demonstrates my ability to solve problems in storing/accessing/modifying data in a client/server model.
+
+
+&emsp; I addressed two potential design flaws related to security.  The first was the user account used by the application.  By restricting access to only execute select stored procedures, the compromised credentials could do far less damage than an account with access to the data tables and permissions to view the stored procedure code.  Additionally, using prepared statements in the stored procedures makes them inherently secure and less susceptible to SQL Injection attacks.
+
+&emsp; The final database creation script is logically segmented and fully commented detailing the functionality of each SQL statement and the reasoning behind them.  This demonstrates my ability to clearly articulate my ideas to other developers that will need to evaluate or modify the code in the future.  The following excerpt is a full stored procedure for updating the user’s target weight.  It is presented in its entirety to demonstrate the concise commenting throughout the script.
+
+
+````sql
+-- The UpdateTargetWeight stored procedure takes a user ID and target weight value as parameters and attempts to update the target weight
+-- of the given user in the users table with an update query.
+-- Prepared statements are used to prevent SQL-Injection attacks against the database.
+-- After the user record update is attempted, a follow-up validation select statement is run to ensure the record was correctly updated.
+-- This procedure will return 0 if the target weight was updated and verified, otherwise it returns 1.
+
+-- Delete stored procedure if it already exists
+DROP PROCEDURE IF EXISTS UpdateTargetWeight;
+
+CREATE PROCEDURE UpdateTargetWeight(
+	IN strUser TEXT,
+	IN fTargetWeight FLOAT
+)
+
+BEGIN
+
+	-- Declare Variables
+	DECLARE user TEXT;	
+	DECLARE targetWeight FLOAT;
+	DECLARE numRecs INT;
+	DECLARE iRetVal INT;
+	
+	-- Initialize variables
+	SET @user = strUser;	
+	SET @targetWeight = fTargetWeight;
+	SET @numRecs = 0;
+	SET @iRetVal = 1;
+	
+	-- Build prepared statment to update target weight in users table
+	PREPARE stmt1 FROM 'UPDATE users SET targetWeight = ? WHERE username = ?;';
+	
+	-- Execute prepared statement
+	EXECUTE stmt1 USING @targetWeight, @user;
+	
+	-- Deallocate prepared statement
+	DEALLOCATE PREPARE stmt1;
+	
+	-- Build prepared statment to verify new target weight for user
+	PREPARE stmt2 FROM 'SELECT COUNT(*) INTO @numRecs FROM users WHERE username = ? AND targetWeight = ?;';
+	
+	-- Execute prepared statement
+	EXECUTE stmt2 USING @user, @targetWeight;
+	
+	-- Deallocate prepared statement
+	DEALLOCATE PREPARE stmt2;
+	
+	-- If a record was returned
+	IF @numRecs > 0 THEN
+	
+		-- Set return value to 0 = target weight updated and verified
+		SET @iRetVal = 0;
+	
+	ELSE
+	
+		-- Set return value to 1 = target weight update failed
+		SET @iRetVal = 1;
+	
+	END IF;
+	
+	-- Return value to application
+	SELECT @iRetVal;
+
+END
+````
