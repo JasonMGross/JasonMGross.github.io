@@ -1,8 +1,63 @@
 # Jason Gross - SNHU CS-499 ePortfolio
 
 
-## Capstone Code Review - Android Weight Tracking Application
-  The following presentation is a code review of a [mobile weight tracking application](https://github.com/JasonMGross/mobile-weight-tracking-app) for the Android platform.  This review will prepare for the task of translating this code from a stand-alone Java application to a .NET desktop application client and separate MySQL server.
+
+## Introduction
+
+&emsp; My name is Jason Gross.  I am a senior engineer for a local automotive manufacture where I have worked for the last 21 years developing software and experimenting with integrating new technologies.  I am a life-long programmer and have spent the last six years studying at SNHU as a part-time student to obtain my Bachelor’s degree in Software Engineering in order advance in my career.   This capstone project is the culmination of those years of study with the goal of showcasing the various skills I have obtained during that time.
+
+
+## Self-Assessment
+
+
+### Team Collaboration
+
+&emsp; Software engineering is not always a one-person job.  Solutions are often developed by a team of engineers and stakeholders who must work cooperatively on the same code base.  To keep things organized and secure, I studied and learned to use Git.  Git is a popular distributed version control software package designed to allow teams to manage the evolution of their code.  CS-320 Software Testing & Automation taught me the process of creating code repositories wherein students were able to edit our specific parts of the same code file without interfering with each other’s work.  We used it to perform reviews of each other’s code giving feedback and making recommendations for later review.  This e-Portfolio is published on GitHub for others to view or modify the work that I’ve done.  This tool has proven invaluable with team collaboration and my skills continue to improve the more I use it.
+
+The following two links are to my Git and BitBucket repositories where all my projects I developed for SNHU are published.
+
+[GitHub Repositories](https://github.com/JasonMGross?tab=repositories)
+
+[BitBucket Repositories](https://bitbucket.org/DeepLogicArchitect/)
+
+
+### Communicating To Stakeholders
+
+&emsp; During CS-250 Software Development Life Cycle, I studied all the different roles that comprise a software engineering team including the product owner, developer, and tester utilizing the modern agile project methodology.  Coming from a background of exclusive waterfall methodologies, it was somewhat of a culture shock for me but still crucial to understand one’s role on the team in order to make the most positive contributions.  A primary takeaway from that class was the constant lines of communication that run between the different stakeholders.  I have experimented with that agile methodology with my employer and found the daily meetings, while inconvenient, revealed and resolved issues earlier and more often than with the previous waterfall methods we typically employed.  I prefer to engage stakeholders frequently so for this project, I called upon friends to act as users to provide feedback and perform testing.  This strengthened the application by addressing details that I would not have thought of on my own.
+
+
+### Software Engineering & Design
+
+&emsp; Software engineering is a process.  I wanted to approach this project using the software development life cycle discussed during the various software courses.  This project began with an idea to improve upon an existing Android software project I completed in a prior course.  The plan was to bring it to a wider audience by recreating it for the Windows operating system.   I chose a language with which I am most comfortable due to the time constraints of recreating an entire client/server application.  The code review video shows my thought processes for the final design using the original application as my roadmap.  I broke the workflow down into screens from the old application and translated and tested each one in isolation.  The testing phase was a combination of my own testing as well as some other people to ensure I didn’t overlook any critical details.  This was an iterative process throughout each category and the final application is published to GitHub to settle into its maintenance period where updates can be made by me and others.  
+
+
+### Algorithms & Data Structures
+
+&emsp; When programming, there is usually more than one way to complete a task with code and the goal for me is to find the simplest and most elegant solution.  I showcase this in each of the three categories of this project including form flow and navigation to data validation and processing.  These characteristics are especially demonstrated in the database where both security and validation are integrated into each stored procedure.   Ultimately, my goal is to develop an evolving set of algorithms that I can confidently use in future projects while still being receptive to ways of improving them.
+
+&emsp; Another best practice that I demonstrate throughout this project is refraining from trying to reinvent the wheel.  This application’s primary function is data storage and retrieval and the choices made for how the data is stored and retrieved should be as efficient as possible.  While it is always an option to attempt to develop new data structures and objects, I prefer to use built-in objects wherever possible.  .NET offers a rich library of data structures to use for SQL development that have been tried and tested and will provide stable functionality with the fewest lines of code.
+
+
+### Databases
+
+&emsp; DAT-220 Introduction to SQL and CS-340 Advanced Programming Concepts taught basic and advanced database development with MySQL and MongoDB.  Over the last 20 years of my professional career, I have worked extensively with SQL Server databases so as an added challenge, I chose to use a fork of MySQL called MariaDB to build upon what I learned in the courses and my own experiences with SQL Server to convert the standalone application from a single user to a multi-user platform.  Over the years, I’ve come to realize that businesses live and die by their data.  The systems that store that data require careful planning and management to maximize accessibility and maintain security.  There are professionals that focus their proficiencies on either the front-end or back-end of application development, but I wanted instead to showcase my skills with both.  Full-stack developers reduce costs by providing a single resource to handle both sides of the development.
+
+
+### Security
+
+&emsp; In 2022, the average cost of a data breach was a record 4.4 million dollars (Fowler, 2022).  This far exceeds the cost of designing security into software from the initial planning to the maintenance of the final release.  CS-405 Secure Coding course detailed the philosophy of Defense in Depth which is a unique layering of different security measures designed to adequately protect a given asset in each set of unique circumstances.  During that course, I designed a security policy and presentation video for a fictional business called Green Pace.  Many of those standards, principles, and best practices have been applied to this project with one or more enhancements made for each of the three categories.
+
+[Secure Coding Policy](https://github.com/JasonMGross/Secure_Coding/blob/main/CS%20405%20Security%20Policy.docx)
+
+[Policy Presentation Video](https://youtu.be/jih5KCgDP0Y)
+
+
+Reference <br>
+Fowler, B. (2022, July 27). Average data breach costs hit a record $4.4 million, report says. CNET. Retrieved October 9, 2022, from https://www.cnet.com/tech/services-and-software/average-data-breach-costs-hit-a-record-4-4-million-report-says/
+
+
+## Code Review - Android Weight Tracking Application
+&emsp; The following presentation is a code review of a [mobile weight tracking application](https://github.com/JasonMGross/mobile-weight-tracking-app) for the Android platform.  This review will prepare for the task of translating this code from a stand-alone Java application to a .NET desktop application client and separate MySQL server.
   
   
 [![Capstone Code Review - Android Weight Tracking Application](https://img.youtube.com/vi/pcUr7N70PUY/hqdefault.jpg)](https://www.youtube.com/watch?v=pcUr7N70PUY)
