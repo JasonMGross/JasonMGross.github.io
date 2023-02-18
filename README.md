@@ -7,6 +7,9 @@
 &emsp; My name is Jason Gross.  I am a senior engineer for a local automotive manufacture where I have worked for the last 21 years developing software and experimenting with integrating new technologies.  I am a life-long programmer and have spent the last six years studying at SNHU as a part-time student to obtain my Bachelor’s degree in Software Engineering in order advance in my career.   This capstone project is the culmination of those years of study with the goal of showcasing the various skills I have obtained during that time.
 
 
+&emsp; This project begins with a professional self-assessment summarizing my experience with developing this capstone project as well as my experience in the computer science program as a whole.  Next, a video is presented wherein I perform a code review of the original application on which this project is based.  I go through the code line by line explaining what is happening and how I intend to improve upon the design in the revised application.  I also explain the reasons behind my design choices and enhancements.  Finally, this capstone application is split into three categories, each focusing on a different software engineering discipline.  Software Engineering & Design category focuses on translating a Java Android application into a VB.NET Windows application.  The Algorithms & Data Structures category focuses on making enhancements to the translated application in both functionality and security.  Then Databases category focuses on separating the database components from the local application to form a multi-user client/server application.  A narrative for each of these categories details the work I have done.
+
+
 ## Self-Assessment
 
 
