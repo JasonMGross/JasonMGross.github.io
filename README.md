@@ -15,7 +15,7 @@
 
 ## Capstone Artifacts
 
-&emsp; This entire project is published in a GitHub repository.   The entire VB.NET solution for WeightLossTracker, the narrative describing how it was made, and WeightLossTrackerDBCreationScript.sql discussed herein can be found and downloaded here:
+&emsp; This entire project is published in a GitHub repository.   The VB.NET solution for WeightLossTracker, the narrative describing how it was made, and WeightLossTrackerDBCreationScript.sql discussed herein can be found and downloaded here:
 
 [Capstone Repository](https://github.com/JasonMGross/JasonMGross.github.io/)
 
