@@ -1,6 +1,7 @@
 # Jason Gross - SNHU CS-499 ePortfolio
 
 
+<br>
 
 ## Introduction
 
@@ -9,6 +10,16 @@
 
 &emsp; This project begins with a professional self-assessment summarizing my experience with developing this capstone project as well as my experience in the computer science program as a whole.  Next, a video is presented wherein I perform a code review of the original application on which this project is based.  I go through the code line by line explaining what is happening and how I intend to improve upon the design in the revised application.  I also explain the reasons behind my design choices and enhancements.  Finally, this capstone application is split into three categories, each focusing on a different software engineering discipline.  Software Engineering & Design category focuses on translating a Java Android application into a VB.NET Windows application.  The Algorithms & Data Structures category focuses on making enhancements to the translated application in both functionality and security.  Then Databases category focuses on separating the database components from the local application to form a multi-user client/server application.  A narrative for each of these categories details the work I have done.
 
+
+<br>
+
+## Capstone Artifacts
+
+&emsp; This entire project is published in a GitHub repository.   The entire VB.NET solution for WeightLossTracker, the narrative describing how it was made, and WeightLossTrackerDBCreationScript.sql discussed herein can be found and downloaded here:
+
+[Capstone Repository](https://github.com/JasonMGross/JasonMGross.github.io/)
+
+<br>
 
 ## Self-Assessment
 
@@ -58,6 +69,7 @@ The following two links are to my Git and BitBucket repositories where all my pr
 Reference <br>
 Fowler, B. (2022, July 27). Average data breach costs hit a record $4.4 million, report says. CNET. Retrieved October 9, 2022, from https://www.cnet.com/tech/services-and-software/average-data-breach-costs-hit-a-record-4-4-million-report-says/
 
+<br>
 
 ## Code Review - Android Weight Tracking Application
 &emsp; The following presentation is a code review of a [mobile weight tracking application](https://github.com/JasonMGross/mobile-weight-tracking-app) for the Android platform.  This review will prepare for the task of translating this code from a stand-alone Java application to a .NET desktop application client and separate MySQL server.  Click on the image below to view the video.
@@ -65,6 +77,7 @@ Fowler, B. (2022, July 27). Average data breach costs hit a record $4.4 million,
   
 [![Capstone Code Review - Android Weight Tracking Application](https://img.youtube.com/vi/pcUr7N70PUY/hqdefault.jpg)](https://www.youtube.com/watch?v=pcUr7N70PUY)
 
+<br>
 
 ## Software Design & Engineering
 
@@ -207,6 +220,7 @@ Dim matches As MatchCollection = rx.Matches(txtPassword.Text)
 If matches.Count > 0 Then
 ````
 
+<br>
 
 ## Algorithms & Data Structure 
 
@@ -261,6 +275,7 @@ dgvWeightData.DataSource = dtData
 
 &emsp; I have demonstrated my ability to identify and address design flaws related to security by replacing the MD5 password hashing algorithm in favor of the more secure SHA256 algorithm making password hashes more difficult to compromise if discovered.  Additionally, I strengthened user security by increasing the minimum length and composition requirements of their passwords to align them with modern best practices.
 
+<br>
 
 ## Databases
 
